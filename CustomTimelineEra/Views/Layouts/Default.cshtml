@@ -1,0 +1,14 @@
+﻿@using Sitecore.Mvc.Analytics.Extensions
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>
+  @Html.Sitecore().VisitorIdentification()
+</head>
+<body>
+  <h1>@Html.Sitecore().Field("title")</h1>
+  <div>
+    @Html.Sitecore().Field("text")
+  </div>
+</body>
+</html>

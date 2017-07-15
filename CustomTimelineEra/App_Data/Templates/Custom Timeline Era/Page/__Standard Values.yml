@@ -1,0 +1,31 @@
+﻿---
+ID: "c03f2b06-8979-42d5-93c2-f68334b5afe8"
+Parent: "b4162013-7cec-497a-ba91-7bd6f4816ec9"
+Template: "b4162013-7cec-497a-ba91-7bd6f4816ec9"
+Path: /sitecore/templates/Custom Timeline Era/Page/__Standard Values
+DB: master
+SharedFields:
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{146586B9-DD13-485A-AA64-E3D1FAA1AEE8}" />
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170714T025227Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "a55f61b5-7b05-4c20-8107-627c0634ee94"
+      Hint: Title
+      Value: $name
