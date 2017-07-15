@@ -150,7 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Facets.cs" />
+    <Compile Include="Infrastructure\BaseController.cs" />
     <Compile Include="Pipelines\CreateVisit\IdentifyContact.cs" />
     <Compile Include="Pipelines\CreateVisit\UpdateContactInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,7 +192,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
