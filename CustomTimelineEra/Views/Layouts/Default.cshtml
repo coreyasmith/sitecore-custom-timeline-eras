@@ -2,13 +2,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>
   @Html.Sitecore().VisitorIdentification()
+
+  <link href="/Content/bootstrap.min.css" rel="stylesheet">
+  <link href="/Content/custom.css" rel="stylesheet">
 </head>
 <body>
-  <h1>@Html.Sitecore().Field("title")</h1>
-  <div>
-    @Html.Sitecore().Field("text")
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Custom Timeline Era</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div>
+      <h1>@Html.Sitecore().Field("title")</h1>
+      <p class="lead">@Html.Sitecore().Field("text")</p>
+    </div>
   </div>
+
+  <script src="/Scripts/jquery-3.1.1.min.js"></script>
+  <script src="/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
