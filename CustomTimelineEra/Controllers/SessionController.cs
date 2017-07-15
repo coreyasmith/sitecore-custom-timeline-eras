@@ -9,7 +9,7 @@ namespace CustomTimelineEra.Controllers
     public ActionResult AbandonSession()
     {
       Session.Abandon();
-      return RedirectToReferrer();
+      return RedirectToReferrer().WithSuccess("Session abandoned.");
     }
   }
 }

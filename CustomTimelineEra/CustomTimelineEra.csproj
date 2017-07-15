@@ -150,9 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\AlertController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Facets.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Infrastructure\RedirectResultExtensions.cs" />
+    <Compile Include="Models\Alert.cs" />
     <Compile Include="Pipelines\CreateVisit\IdentifyContact.cs" />
     <Compile Include="Pipelines\CreateVisit\UpdateContactInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -184,6 +187,7 @@
     <Content Include="Views\Layouts\Default.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Alert\Alert.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,9 +195,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
