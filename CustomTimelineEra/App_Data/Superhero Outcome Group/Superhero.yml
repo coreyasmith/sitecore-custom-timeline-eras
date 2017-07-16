@@ -1,0 +1,14 @@
+﻿---
+ID: "ad860b0f-d953-4cf6-b0bd-345472b5c4e1"
+Parent: "03dac2cb-cac1-4621-81f8-e7b56490f1be"
+Template: "a4dc92d1-1fff-429b-a186-1a1b3f608217"
+Path: /sitecore/system/Marketing Control Panel/Taxonomies/Outcome group/Superhero
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170715T222859Z
