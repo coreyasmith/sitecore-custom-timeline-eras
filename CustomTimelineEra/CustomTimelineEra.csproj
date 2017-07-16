@@ -71,11 +71,23 @@
     <Reference Include="Sitecore.Analytics.Model, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Analytics.Model.NoReferences.8.2.170614\lib\NET452\Sitecore.Analytics.Model.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Analytics.Outcome, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Analytics.Outcome.NoReferences.8.2.170614\lib\NET452\Sitecore.Analytics.Outcome.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Cintel, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Cintel.NoReferences.8.2.170614\lib\NET452\Sitecore.Cintel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.8.2.170614\lib\NET452\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Marketing.NoReferences.8.2.170614\lib\NET452\Sitecore.Marketing.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing.Core, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Marketing.Core.NoReferences.8.2.170614\lib\NET452\Sitecore.Marketing.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing.Taxonomy, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Marketing.Taxonomy.NoReferences.8.2.170614\lib\NET452\Sitecore.Marketing.Taxonomy.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Mvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Mvc.NoReferences.8.2.170614\lib\NET452\Sitecore.Mvc.dll</HintPath>
@@ -156,11 +168,16 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AlertController.cs" />
+    <Compile Include="Controllers\OutcomesController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Facets.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Infrastructure\OutcomeHelper.cs" />
     <Compile Include="Infrastructure\RedirectResultExtensions.cs" />
     <Compile Include="Models\Alert.cs" />
+    <Compile Include="Models\OutcomeGroupViewModel.cs" />
+    <Compile Include="Models\OutcomesPanelViewModel.cs" />
+    <Compile Include="Models\OutcomeDefinitionViewModel.cs" />
     <Compile Include="Pipelines\CreateVisit\IdentifyContact.cs" />
     <Compile Include="Pipelines\CreateVisit\UpdateContactInformation.cs" />
     <Compile Include="Pipelines\Journey\RemoveAnonymousEra.cs" />
@@ -195,6 +212,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Alert\Alert.cshtml" />
+    <Content Include="Views\Outcomes\OutcomesPanel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,6 +12,11 @@ namespace CustomTimelineEra.Infrastructure
       return WithMessage(result, message, "alert-success");
     }
 
+    public static RedirectResult WithFailure(this RedirectResult result, string message)
+    {
+      return WithMessage(result, message, "alert-danger");
+    }
+
     private static RedirectResult WithMessage(RedirectResult result, string message, string alertClass)
     {
       if (string.IsNullOrEmpty(message)) return result;

@@ -1,0 +1,16 @@
+﻿@using System.Web.Mvc.Html
+@using CustomTimelineEra.Models
+@model OutcomesPanelViewModel
+<div>
+  @using (Html.BeginForm("TriggerOutcome", "Outcomes", FormMethod.Post))
+  {
+    foreach (var outcomeGroup in Model.OutcomeGroups)
+    {
+      <h2><strong>@outcomeGroup.OutcomeGroupName</strong> Outcomes</h2>
+      foreach (var outcome in outcomeGroup.OutcomeDefinitions)
+      {
+        <button type="submit" value="@outcome.Id" name="outcomeDefinitionId" class="btn btn-lg btn-primary">@outcome.Name</button>
+      }
+    }
+  }
+</div>
