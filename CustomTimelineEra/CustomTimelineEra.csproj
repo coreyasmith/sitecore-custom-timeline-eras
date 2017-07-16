@@ -156,6 +156,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Config\Include\z.CustomTimelineEra\AddCustomEras.config" />
     <Content Include="App_Config\Include\z.CustomTimelineEra\RemoveAnonymousEra.config.disabled" />
     <Content Include="App_Config\Include\z.CustomTimelineEra\RenameAnonymousEra.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -180,6 +181,7 @@
     <Compile Include="Models\OutcomeDefinitionViewModel.cs" />
     <Compile Include="Pipelines\CreateVisit\IdentifyContact.cs" />
     <Compile Include="Pipelines\CreateVisit\UpdateContactInformation.cs" />
+    <Compile Include="Pipelines\Journey\PopulateCustomEraChanges.cs" />
     <Compile Include="Pipelines\Journey\RemoveAnonymousEra.cs" />
     <Compile Include="Pipelines\Journey\RenameAnonymousEra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,6 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
