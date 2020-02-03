@@ -1,54 +1,46 @@
 ﻿@using Sitecore.Mvc.Analytics.Extensions
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>
   @Html.Sitecore().VisitorIdentification()
 
   <link href="/Content/bootstrap.min.css" rel="stylesheet">
-  <link href="/Content/custom.css" rel="stylesheet">
+  <link href="/Content/custom.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Custom Timeline Era</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active">
-            @using (Html.BeginForm("AbandonSession", "Session", FormMethod.Post))
-            {
-              <button type="submit" class="btn btn-warning navbar-btn">Abandon Session</button>
-            }
-          </li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/">Custom Timeline Era</a>
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+      </ul>
+      @using (Html.BeginForm("AbandonSession", "Session", FormMethod.Post, new { @class = "form-inline my-2 my-lg-0" }))
+      {
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Abandon Session</button>
+      }
     </div>
   </nav>
 
   @Html.Action("Alert", "Alert")
 
-  <div class="container">
-    <div>
-      @Html.Sitecore().Placeholder("main")
-    </div>
-  </div>
+  <main class="px-5" role="main">
+    @Html.Sitecore().Placeholder("main")
+  </main>
 
-  <script src="/Scripts/jquery-3.4.1.min.js"></script>
+  <script src="/Scripts/jquery-3.4.1.slim.min.js"></script>
+  <script src="/Scripts/umd/popper.min.js"></script>
   <script src="/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

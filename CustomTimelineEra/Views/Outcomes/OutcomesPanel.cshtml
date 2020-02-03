@@ -6,11 +6,13 @@
   {
     foreach (var outcomeGroup in Model.OutcomeGroups)
     {
-      <h2><strong>@outcomeGroup.OutcomeGroupName</strong> Outcomes</h2>
-      foreach (var outcome in outcomeGroup.OutcomeDefinitions)
-      {
-        <button type="submit" value="@outcome.Id" name="outcomeDefinitionId" class="btn btn-lg btn-primary">@outcome.Name</button>
-      }
+      <div class="pt-3">
+        <h2><strong>@outcomeGroup.OutcomeGroupName</strong> Outcomes</h2>
+        @foreach (var outcome in outcomeGroup.OutcomeDefinitions)
+        {
+          <button type="submit" value="@outcome.Id" name="outcomeDefinitionId" class="btn btn-primary">@outcome.Name</button>
+        }
+      </div>
     }
   }
 </div>
