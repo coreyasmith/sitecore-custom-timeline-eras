@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{4974
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		CustomTimelineEra\App_Config\Include\z.CustomTimeLineEra.Serialization\CustomSerializationFolder.config = CustomTimelineEra\App_Config\Include\z.CustomTimeLineEra.Serialization\CustomSerializationFolder.config
 		NuGet.config = NuGet.config
+		PublishSettings.targets = PublishSettings.targets
 		README.md = README.md
 	EndProjectSection
 EndProject
