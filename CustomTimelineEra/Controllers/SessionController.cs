@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using CustomTimelineEra.Infrastructure;
+using Sitecore.Analytics;
 
 namespace CustomTimelineEra.Controllers
 {
@@ -8,6 +9,7 @@ namespace CustomTimelineEra.Controllers
     [HttpPost]
     public ActionResult AbandonSession()
     {
+      Tracker.Current.EndTracking();
       Session.Abandon();
       return RedirectToReferrer().WithSuccess("Session abandoned.");
     }
