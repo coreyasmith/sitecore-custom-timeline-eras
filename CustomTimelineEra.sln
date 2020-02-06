@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomTimelineEra", "Custom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{4974EC9F-C190-4584-8012-1E2E7D19E15F}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		CustomTimelineEra\App_Config\Include\z.CustomTimeLineEra.Serialization\CustomSerializationFolder.config = CustomTimelineEra\App_Config\Include\z.CustomTimeLineEra.Serialization\CustomSerializationFolder.config
