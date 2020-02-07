@@ -4,11 +4,6 @@ using CustomTimelineEra.Infrastructure;
 using CustomTimelineEra.Models;
 using Sitecore;
 using Sitecore.Common;
-using Sitecore.Marketing.Definitions;
-using Sitecore.Marketing.Definitions.Outcomes;
-using Sitecore.Marketing.Definitions.Outcomes.Model;
-using Sitecore.Marketing.Taxonomy;
-using Sitecore.Marketing.Taxonomy.Extensions;
 
 namespace CustomTimelineEra.Controllers
 {
@@ -16,11 +11,9 @@ namespace CustomTimelineEra.Controllers
   {
     private readonly OutcomeHelper _outcomeHelper;
 
-    public OutcomesController()
+    public OutcomesController(OutcomeHelper outcomeHelper)
     {
-      var outcomeGroupTaxonomyManager = TaxonomyManager.Provider.GetOutcomeGroupManager();
-      var outcomeDefinitionManager = (OutcomeDefinitionManager)DefinitionManagerFactory.Default.GetDefinitionManager<IOutcomeDefinition>();
-      _outcomeHelper = new OutcomeHelper(outcomeGroupTaxonomyManager, outcomeDefinitionManager);
+      _outcomeHelper = outcomeHelper ?? throw new ArgumentNullException(nameof(outcomeHelper));
     }
 
     public ViewResult OutcomesPanel(Alert alert)

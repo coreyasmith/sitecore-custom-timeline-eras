@@ -6,6 +6,7 @@ namespace CustomTimelineEra.Controllers
 {
   public class SessionController : BaseController
   {
+
     [HttpPost]
     public ActionResult AbandonSession()
     {

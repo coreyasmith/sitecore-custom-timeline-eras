@@ -11,7 +11,6 @@ using Sitecore.Common;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Marketing.Definitions;
-using Sitecore.Marketing.Definitions.Outcomes;
 using Sitecore.Marketing.Definitions.Outcomes.Model;
 using Sitecore.Marketing.Taxonomy;
 using Sitecore.Marketing.Taxonomy.Model;
@@ -22,9 +21,11 @@ namespace CustomTimelineEra.Infrastructure
   public class OutcomeHelper
   {
     private readonly OutcomeGroupTaxonomyManager _outcomeGroupTaxonomyManager;
-    private readonly OutcomeDefinitionManager _outcomeDefinitionManager;
+    private readonly IDefinitionManager<IOutcomeDefinition> _outcomeDefinitionManager;
 
-    public OutcomeHelper(OutcomeGroupTaxonomyManager outcomeGroupTaxonomyManager, OutcomeDefinitionManager outcomeDefinitionManager)
+    public OutcomeHelper(
+      OutcomeGroupTaxonomyManager outcomeGroupTaxonomyManager,
+      IDefinitionManager<IOutcomeDefinition> outcomeDefinitionManager)
     {
       _outcomeGroupTaxonomyManager = outcomeGroupTaxonomyManager ?? throw new ArgumentNullException(nameof(outcomeGroupTaxonomyManager));
       _outcomeDefinitionManager = outcomeDefinitionManager ?? throw new ArgumentNullException(nameof(outcomeDefinitionManager));
