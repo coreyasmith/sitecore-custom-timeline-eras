@@ -18,12 +18,13 @@ for this solution to work.
 4. Build and publish the solution.
 5. Publish the site from Sitecore.
 6. Open the home page in an incognito window or clear your cookies.
-7. Trigger some outcomes.
-8. Click the `Abandon Session` button to force the outcomes to show up on the
+7. Click the `Identify Contact` button to identify the current session.
+8. Trigger some outcomes.
+9. Click the `Abandon Session` button to force the outcomes to show up on the
    Experience Profile.
-9. Open the Experience Profile from the Sitecore Launchpad and click
-   *Bruce Wayne* to see the outcomes on the timeline.
-10. Enjoy.
+10. Open the Experience Profile from the Sitecore Launchpad and click
+    *Bruce Wayne* to see the outcomes on the timeline.
+11. Enjoy.
 
 [1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update4.aspx
 [2]: PublishSettings.targets

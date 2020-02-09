@@ -150,6 +150,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="App_Config\Include\z.CustomTimelineEra\AddCustomEras.config" />
+    <Content Include="App_Config\Include\z.CustomTimelineEra\ContactDetails.config" />
     <Content Include="App_Config\Include\z.CustomTimelineEra\RemoveAnonymousEra.config.disabled" />
     <Content Include="App_Config\Include\z.CustomTimelineEra\RenameAnonymousEra.config" />
     <Content Include="App_Config\Include\Rainbow.config" />
@@ -272,19 +273,19 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AlertController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\OutcomesController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="CustomTimelineEraConfigurator.cs" />
     <Compile Include="Facets.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Infrastructure\ContactHelper.cs" />
     <Compile Include="Infrastructure\OutcomeHelper.cs" />
     <Compile Include="Infrastructure\RedirectResultExtensions.cs" />
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\OutcomeGroupViewModel.cs" />
     <Compile Include="Models\OutcomesPanelViewModel.cs" />
     <Compile Include="Models\OutcomeDefinitionViewModel.cs" />
-    <Compile Include="Pipelines\CreateVisit\IdentifyContact.cs" />
-    <Compile Include="Pipelines\CreateVisit\UpdateContactInformation.cs" />
     <Compile Include="Pipelines\Journey\PopulateCustomEraChanges.cs" />
     <Compile Include="Pipelines\Journey\RemoveAnonymousEra.cs" />
     <Compile Include="Pipelines\Journey\RenameAnonymousEra.cs" />
@@ -299,7 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="App_Config\Include\z.CustomTimelineEra\IdentifyContact.config" />
     <Content Include="App_Config\Include\z.CustomTimelineEra.Serialization\CustomSerializationFolder.config" />
     <Content Include="App_Config\Include\z.CustomTimelineEra.Serialization\DefaultConfig.config" />
     <None Include="packages.config" />

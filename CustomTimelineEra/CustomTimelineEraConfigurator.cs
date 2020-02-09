@@ -9,6 +9,7 @@ namespace CustomTimelineEra
   {
     public void Configure(IServiceCollection serviceCollection)
     {
+      serviceCollection.AddTransient<ContactController>();
       serviceCollection.AddTransient<OutcomesController>();
       serviceCollection.AddTransient<SessionController>();
 

@@ -2,18 +2,29 @@
 using System.Drawing.Imaging;
 using System.IO;
 using CustomTimelineEra.Properties;
+using Sitecore.Analytics;
+using Sitecore.Analytics.Model;
 using Sitecore.Analytics.Model.Entities;
 using Sitecore.Analytics.Model.Framework;
-using Sitecore.Analytics.Pipelines.CreateVisits;
 using Sitecore.Analytics.Tracking;
 
-namespace CustomTimelineEra.Pipelines.CreateVisit
+namespace CustomTimelineEra.Infrastructure
 {
-  public class UpdateContactInformation : CreateVisitProcessor
+  public static class ContactHelper
   {
-    public override void Process(CreateVisitArgs args)
+    public static bool ContactIsIdentified()
     {
-      var contact = args.Session.Contact;
+      return Tracker.Current.Contact.Identifiers.IdentificationLevel == ContactIdentificationLevel.Known;
+    }
+
+    public static void IdentifyContact()
+    {
+      Tracker.Current.Session.Identify(Constants.ContactEmail);
+    }
+
+    public static void UpdateContactInformation()
+    {
+      var contact = Tracker.Current.Contact;
       UpdatePersonalInfo(contact);
       UpdateEmailAddress(contact);
       UpdatePhoneNumber(contact);
@@ -36,7 +47,7 @@ namespace CustomTimelineEra.Pipelines.CreateVisit
     {
       var emailAddresses = contact.GetFacet<IContactEmailAddresses>(Facets.ContactEmailAddresses.Emails);
       var homeEmail = GetOrCreateDictionaryValue(emailAddresses.Entries, Facets.ContactEmailAddresses.Keys.Home);
-        
+
       homeEmail.SmtpAddress = Constants.ContactEmail;
 
       emailAddresses.Preferred = Facets.ContactEmailAddresses.Keys.Home;
@@ -69,7 +80,7 @@ namespace CustomTimelineEra.Pipelines.CreateVisit
       addresses.Preferred = Facets.ContactAddresses.Keys.Home;
     }
 
-    private static T GetOrCreateDictionaryValue<T>(IElementDictionary<T> dictionary, string key) 
+    private static T GetOrCreateDictionaryValue<T>(IElementDictionary<T> dictionary, string key)
       where T : class, IElement
     {
       var entry = dictionary.Contains(key) ? dictionary[key] : dictionary.Create(key);
