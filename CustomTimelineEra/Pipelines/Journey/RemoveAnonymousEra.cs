@@ -8,10 +8,14 @@ namespace CustomTimelineEra.Pipelines.Journey
 {
   public class RemoveAnonymousEra : ReportProcessorBase
   {
+    public bool Enabled { get; set; }
+
     public bool ShowIcon { get; set; }
 
     public override void Process(ReportProcessorArgs args)
     {
+      if (!Enabled) return;
+
       var resultTableForView = args.ResultTableForView;
       RemoveAnonymousEraFromTimeline(resultTableForView);
     }

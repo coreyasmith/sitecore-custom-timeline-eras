@@ -149,10 +149,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
-    <Content Include="App_Config\Include\z.CustomTimelineEra\AddCustomEras.config" />
     <Content Include="App_Config\Include\z.CustomTimelineEra\ContactDetails.config" />
-    <Content Include="App_Config\Include\z.CustomTimelineEra\RemoveAnonymousEra.config.disabled" />
-    <Content Include="App_Config\Include\z.CustomTimelineEra\RenameAnonymousEra.config" />
     <Content Include="App_Config\Include\Rainbow.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config.disabled" />
@@ -182,6 +179,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="App_Config\Include\z.CustomTimelineEra\CustomTimelineEras.config" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
