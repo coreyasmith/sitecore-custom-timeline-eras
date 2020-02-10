@@ -270,15 +270,15 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Cintel">
-      <Version>8.2.170614</Version>
+      <Version>8.2.180406</Version>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Kernel">
-      <Version>8.2.170614</Version>
+      <Version>8.2.180406</Version>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Mvc.Analytics">
-      <Version>8.2.170614</Version>
+      <Version>8.2.180406</Version>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Unicorn">

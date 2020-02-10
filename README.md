@@ -10,7 +10,7 @@ for this solution to work.
 
 ## 🚀 Usage
 
-1. Install a new instance of [Sitecore 8.2 Update-4][1].
+1. Install a new instance of [Sitecore 8.2 Update-7][1].
 2. Update the `publishUrl` in [`PublishSettings.targets`][2] to point to your
    Sitecore installation's `Website` folder.
 3. Update the `physicalRootPath` in [`CustomSerializationFolder.config`][3] to
@@ -32,7 +32,7 @@ This repository contains Sitecore Support patch
 [`Sitecore.Support.126998.134727`][4] to fix an issue with the timeline. Please
 see the [`README.md` with that patch][5] for more information.
 
-[1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update4.aspx
+[1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update7.aspx
 [2]: PublishSettings.targets
 [3]: src/CustomTimelineEras/App_Config/Include/z.CustomTimelineEras.Serialization/CustomSerializationFolder.config
 [4]: https://github.com/SitecoreSupport/Sitecore.Support.126998.134727
