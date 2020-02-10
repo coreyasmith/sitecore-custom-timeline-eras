@@ -28,4 +28,4 @@ for this solution to work.
 
 [1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update4.aspx
 [2]: PublishSettings.targets
-[3]: CustomTimelineEra/App_Config/Include/z.CustomTimelineEra.Serialization/CustomSerializationFolder.config
+[3]: src/CustomTimelineEra/App_Config/Include/z.CustomTimelineEra.Serialization/CustomSerializationFolder.config
