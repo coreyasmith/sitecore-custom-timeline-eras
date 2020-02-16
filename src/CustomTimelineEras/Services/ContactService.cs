@@ -4,94 +4,127 @@ using System.IO;
 using CustomTimelineEras.Properties;
 using Sitecore.Analytics;
 using Sitecore.Analytics.Model;
-using Sitecore.Analytics.Model.Entities;
-using Sitecore.Analytics.Model.Framework;
 using Sitecore.Analytics.Tracking;
+using Sitecore.XConnect;
+using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Client.Configuration;
+using Sitecore.XConnect.Collection.Model;
+using XConnectContact = Sitecore.XConnect.Contact;
+using DataAccessConstants = Sitecore.Analytics.XConnect.DataAccess.Constants;
 
 namespace CustomTimelineEras.Services
 {
-  public static class ContactService
+  public class ContactService
   {
-    public static bool ContactIsIdentified()
+    private readonly ContactManager _contactManager;
+
+    public ContactService(ContactManager contactManager)
     {
-      return Tracker.Current.Contact.Identifiers.IdentificationLevel == ContactIdentificationLevel.Known;
+      _contactManager = contactManager ?? throw new ArgumentNullException(nameof(contactManager));
     }
 
-    public static void IdentifyContact()
+    public bool ContactIsIdentified()
     {
-      Tracker.Current.Session.Identify(Constants.ContactEmail);
+      return Tracker.Current.Contact.IdentificationLevel == ContactIdentificationLevel.Known;
     }
 
-    public static void UpdateContactInformation()
+    public void IdentifyContact()
     {
-      var contact = Tracker.Current.Contact;
-      UpdatePersonalInfo(contact);
-      UpdateEmailAddress(contact);
-      UpdatePhoneNumber(contact);
-      UpdateAddress(contact);
-      UpdatePicture(contact);
+      Tracker.Current.Session.IdentifyAs("custom-timeline-era", Constants.ContactEmail);
     }
 
-    private static void UpdatePersonalInfo(Contact contact)
+    public void UpdateContactInformation()
     {
-      var personalInfo = contact.GetFacet<IContactPersonalInfo>(Facets.ContactPersonalInfo.Personal);
+      var trackerContact = Tracker.Current.Contact;
+      if (trackerContact.IsNew)
+      {
+        trackerContact.ContactSaveMode = ContactSaveMode.AlwaysSave;
+        _contactManager.SaveContactToCollectionDb(trackerContact);
+      }
+
+      var contactExpandOptions = GetContactExpandOptions();
+      var trackerIdentifier = new IdentifiedContactReference(DataAccessConstants.IdentifierSource, trackerContact.ContactId.ToString("N"));
+      using (var client = SitecoreXConnectClientConfiguration.GetClient())
+      {
+        var xConnectContact = client.Get(trackerIdentifier, contactExpandOptions);
+        if (xConnectContact == null) throw new InvalidOperationException($"Could not retrieve contact with identifier {trackerIdentifier.Identifier} from xConnect.");
+
+        UpdateFacets(client, xConnectContact);
+        client.Submit();
+      }
+
+      ReloadTrackerContact(trackerContact.ContactId);
+    }
+
+    private static ContactExpandOptions GetContactExpandOptions()
+    {
+      return new ContactExpandOptions(
+        PersonalInformation.DefaultFacetKey,
+        EmailAddressList.DefaultFacetKey,
+        PhoneNumberList.DefaultFacetKey,
+        AddressList.DefaultFacetKey,
+        Avatar.DefaultFacetKey);
+    }
+
+    private static void UpdateFacets(IXdbContext client, XConnectContact contact)
+    {
+      UpdatePersonalInfo(client, contact);
+      UpdateEmailAddress(client, contact);
+      UpdatePhoneNumber(client, contact);
+      UpdateAddress(client, contact);
+      UpdatePicture(client, contact);
+    }
+
+    private static void UpdatePersonalInfo(IXdbContext client, XConnectContact contact)
+    {
+      var personalInfo = contact.Personal() ?? new PersonalInformation();
       personalInfo.Title = "Mr.";
       personalInfo.FirstName = "Bruce";
-      personalInfo.Surname = "Wayne";
+      personalInfo.LastName = "Wayne";
       personalInfo.JobTitle = "Chief Executive Officer";
-      personalInfo.BirthDate = new DateTime(1939, 5, 27);
+      personalInfo.Birthdate = new DateTime(1939, 5, 27);
       personalInfo.Gender = "Male";
+      client.SetFacet(contact, PersonalInformation.DefaultFacetKey, personalInfo);
     }
 
-    private static void UpdateEmailAddress(Contact contact)
+    private static void UpdateEmailAddress(IXdbContext client, XConnectContact contact)
     {
-      var emailAddresses = contact.GetFacet<IContactEmailAddresses>(Facets.ContactEmailAddresses.Emails);
-      var homeEmail = GetOrCreateDictionaryValue(emailAddresses.Entries, Facets.ContactEmailAddresses.Keys.Home);
-
-      homeEmail.SmtpAddress = Constants.ContactEmail;
-
-      emailAddresses.Preferred = Facets.ContactEmailAddresses.Keys.Home;
+      var homeEmail = new EmailAddress(Constants.ContactEmail, true);
+      var emailAddresses = contact.Emails() ?? new EmailAddressList(homeEmail, Facets.PreferredEmail);
+      emailAddresses.PreferredEmail = homeEmail;
+      client.SetFacet(contact, EmailAddressList.DefaultFacetKey, emailAddresses);
     }
 
-    private static void UpdatePhoneNumber(Contact contact)
+    private static void UpdatePhoneNumber(IXdbContext client, XConnectContact contact)
     {
-      var phoneNumbers = contact.GetFacet<IContactPhoneNumbers>(Facets.ContactPhoneNumbers.PhoneNumbers);
-      var homePhone = GetOrCreateDictionaryValue(phoneNumbers.Entries, Facets.ContactPhoneNumbers.Keys.Home);
-
-      homePhone.CountryCode = "+1";
-      homePhone.Number = "555-867-5309";
-
-      phoneNumbers.Preferred = Facets.ContactPhoneNumbers.Keys.Home;
+      var homePhone = new PhoneNumber("+1", "(555) 867-5309");
+      var phoneNumbers = contact.PhoneNumbers() ?? new PhoneNumberList(homePhone, Facets.PreferredPhoneNumber);
+      phoneNumbers.PreferredPhoneNumber = homePhone;
+      client.SetFacet(contact, PhoneNumberList.DefaultFacetKey, phoneNumbers);
     }
 
-    private static void UpdateAddress(Contact contact)
+    private static void UpdateAddress(IXdbContext client, XConnectContact contact)
     {
-      var addresses = contact.GetFacet<IContactAddresses>(Facets.ContactAddresses.Addresses);
-      var homeAddress = GetOrCreateDictionaryValue(addresses.Entries, Facets.ContactAddresses.Keys.Home);
-
-      homeAddress.StreetLine1 = "1007 Mountain Drive";
-      homeAddress.City = "Gotham City";
-      homeAddress.StateProvince = "NJ";
-      homeAddress.PostalCode = "53556";
-      homeAddress.Country = "United States";
-      homeAddress.Location.Latitude = 39.399544f;
-      homeAddress.Location.Longitude = -74.886244f;
-
-      addresses.Preferred = Facets.ContactAddresses.Keys.Home;
+      var homeAddress = new Address
+      {
+        AddressLine1 = "1007 Mountain Drive",
+        City = "Gotham City",
+        StateOrProvince = "NJ",
+        PostalCode = "53556",
+        CountryCode = "US",
+        GeoCoordinate = new GeoCoordinate(39.399544f, -74.886244f)
+      };
+      var addresses = contact.Addresses() ?? new AddressList(homeAddress, Facets.PreferredAddress);
+      addresses.PreferredAddress = homeAddress;
+      client.SetFacet(contact, AddressList.DefaultFacetKey, addresses);
     }
 
-    private static T GetOrCreateDictionaryValue<T>(IElementDictionary<T> dictionary, string key)
-      where T : class, IElement
+    private static void UpdatePicture(IXdbContext client, XConnectContact contact)
     {
-      var entry = dictionary.Contains(key) ? dictionary[key] : dictionary.Create(key);
-      return entry;
-    }
-
-    private static void UpdatePicture(Contact contact)
-    {
-      var picture = contact.GetFacet<IContactPicture>(Facets.ContactPicture.Picture);
-      picture.Picture = LoadPicture();
-      picture.MimeType = "image/jpeg";
+      var picture = LoadPicture();
+      var avatar = contact.Avatar() ?? new Avatar("image/jpeg", picture);
+      avatar.Picture = picture;
+      client.SetFacet(contact, Avatar.DefaultFacetKey, avatar);
     }
 
     private static byte[] LoadPicture()
@@ -102,6 +135,12 @@ namespace CustomTimelineEras.Services
         image.Save(memoryStream, ImageFormat.Jpeg);
         return memoryStream.ToArray();
       }
+    }
+
+    private void ReloadTrackerContact(Guid contactId)
+    {
+      _contactManager.RemoveFromSession(contactId);
+      Tracker.Current.Session.Contact = _contactManager.LoadContact(contactId);
     }
   }
 }

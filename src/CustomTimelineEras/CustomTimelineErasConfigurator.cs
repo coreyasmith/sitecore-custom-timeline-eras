@@ -13,6 +13,7 @@ namespace CustomTimelineEras
       serviceCollection.AddTransient<OutcomesController>();
       serviceCollection.AddTransient<SessionController>();
 
+      serviceCollection.AddSingleton<ContactService>();
       serviceCollection.AddSingleton<OutcomesPanelViewModelBuilder>();
     }
   }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using CustomTimelineEras.Models;
-using Sitecore;
 using Sitecore.Marketing.Definitions;
 using Sitecore.Marketing.Definitions.Outcomes.Model;
 using Sitecore.Marketing.Taxonomy;
@@ -14,11 +13,11 @@ namespace CustomTimelineEras.Services
 {
   public class OutcomesPanelViewModelBuilder
   {
-    private readonly OutcomeGroupTaxonomyManager _outcomeGroupTaxonomyManager;
+    private readonly IOutcomeGroupTaxonomyManager _outcomeGroupTaxonomyManager;
     private readonly IDefinitionManager<IOutcomeDefinition> _outcomeDefinitionManager;
 
     public OutcomesPanelViewModelBuilder(
-      OutcomeGroupTaxonomyManager outcomeGroupTaxonomyManager,
+      IOutcomeGroupTaxonomyManager outcomeGroupTaxonomyManager,
       IDefinitionManager<IOutcomeDefinition> outcomeDefinitionManager)
     {
       _outcomeGroupTaxonomyManager = outcomeGroupTaxonomyManager ?? throw new ArgumentNullException(nameof(outcomeGroupTaxonomyManager));
@@ -64,12 +63,11 @@ namespace CustomTimelineEras.Services
 
     private static IEnumerable<OutcomeDefinitionViewModel> MapOutcomeDefinitionsToViewModels(IEnumerable<DefinitionResult<IOutcomeDefinition>> outcomeDefinitions)
     {
-      return outcomeDefinitions.Select(definition => Context.Database.GetItem(definition.Data.Id))
-        .Select(definitionItem => new OutcomeDefinitionViewModel
-        {
-          Id = definitionItem.ID.ToGuid(),
-          Name = definitionItem.Name
-        });
+      return outcomeDefinitions.Select(definiton => new OutcomeDefinitionViewModel
+      {
+        Id = definiton.Data.Id,
+        Name = definiton.Data.Alias
+      }).ToList();
     }
   }
 }

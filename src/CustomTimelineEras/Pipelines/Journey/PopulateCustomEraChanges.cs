@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
-using Sitecore;
-using Sitecore.Analytics.Outcome.Model;
+using Sitecore.Cintel.ContactService;
 using Sitecore.Cintel.Reporting;
 using Sitecore.Cintel.Reporting.Contact.Journey;
 using Sitecore.Cintel.Reporting.Processors;
-using Sitecore.Common;
 using Sitecore.Data.Fields;
 using Sitecore.Marketing.Definitions;
 using Sitecore.Marketing.Definitions.Outcomes.Model;
+using Sitecore.XConnect;
+using Sitecore.XConnect.Client;
+using Sitecore.XConnect.Client.Configuration;
 
 namespace CustomTimelineEras.Pipelines.Journey
 {
@@ -31,28 +32,47 @@ namespace CustomTimelineEras.Pipelines.Journey
         var timeLineEventId = dataRow.Field<Guid?>(Schema.TimelineEventId.Name);
         if (!timeLineEventId.HasValue) continue;
 
-        var contactOutcome = changingOutcomesFor.SingleOrDefault(o => o.Id == timeLineEventId.Value.ToID());
+        var contactOutcome = changingOutcomesFor.SingleOrDefault(o => o.Id == timeLineEventId.Value);
         if (contactOutcome == null) continue;
 
-        var outcomeDefinition = OutcomeDefinitionManager.Get(contactOutcome.DefinitionId, CurrentCultureInfo);
-        ConvertToEraChangeEvent(dataRow, outcomeDefinition);
+        var definition = OutcomeDefinitionManager.Get(contactOutcome.DefinitionId, CurrentCultureInfo);
+        ConvertToEraChangeEvent(dataRow, definition);
       }
     }
 
-    protected virtual List<ContactOutcome> GetEraChangingOutcomesFor(Guid contactId)
+    protected virtual IReadOnlyCollection<Outcome> GetEraChangingOutcomesFor(Guid contactId)
     {
       var allOutcomeDefinitions = OutcomeDefinitionManager.GetAll(CultureInfo.InvariantCulture);
-      var allEraChangingOutcomes = allOutcomeDefinitions.Where(IsCustomEraChangingOutcome).ToList();
+      var allEraChangingOutcomes = allOutcomeDefinitions.Where(IsCustomEraChangingOutcome);
 
-      var contactOutcomes = OutcomeManager.GetForEntity<ContactOutcome>(contactId.ToID());
-      var contactEraChangingOutcomes = contactOutcomes.Where(oc => allEraChangingOutcomes.Any(od => od.Data.Id == oc.DefinitionId));
-      return contactEraChangingOutcomes.ToList();
+      var contact = GetContact(contactId);
+      var contactOutcomes = contact.Interactions.SelectMany(i => i.Events.OfType<Outcome>());
+      var eraChangingOutcomes = contactOutcomes.Where(co => allEraChangingOutcomes.Any(o => o.Data.Id == co.DefinitionId));
+      return eraChangingOutcomes.ToList();
+    }
+
+    protected virtual Contact GetContact(Guid contactId)
+    {
+      using (var client = SitecoreXConnectClientConfiguration.GetClient())
+      {
+        var contactReference = new ContactReference(contactId);
+        var contact = client.Get(contactReference, new ContactExpandOptions(Array.Empty<string>())
+        {
+          Interactions = new RelatedInteractionsExpandOptions
+          {
+            StartDateTime = DateTime.MinValue,
+            Limit = int.MaxValue
+          }
+        });
+        if (contact == null) throw new ContactNotFoundException($"No Contact with id [{contactId}] found.");
+        return contact;
+      }
     }
 
     protected virtual bool IsCustomEraChangingOutcome(DefinitionResult<IOutcomeDefinition> outcomeDefinition)
     {
-      var outcomeDefinitionItem = Context.Database.GetItem(outcomeDefinition.Data.Id);
-      var showAsEraField = (CheckboxField)outcomeDefinitionItem.Fields[Templates.CustomOutcomeDefinition.Fields.ShowAsEra];
+      var definitionItem = GetItemFromCurrentContext(outcomeDefinition.Data.Id);
+      var showAsEraField = (CheckboxField)definitionItem.Fields[Templates.CustomOutcomeDefinition.Fields.ShowAsEra];
       var isCustomEraChangingOutcome = showAsEraField?.Checked ?? false;
       return isCustomEraChangingOutcome;
     }

@@ -10,16 +10,16 @@ namespace CustomTimelineEras.Controllers
 {
   public class OutcomesController : BaseController
   {
-    private readonly OutcomesPanelViewModelBuilder viewModelBuilder;
+    private readonly OutcomesPanelViewModelBuilder _viewModelBuilder;
 
     public OutcomesController(OutcomesPanelViewModelBuilder viewModelBuilder)
     {
-      this.viewModelBuilder = viewModelBuilder ?? throw new ArgumentNullException(nameof(viewModelBuilder));
+      _viewModelBuilder = viewModelBuilder ?? throw new ArgumentNullException(nameof(viewModelBuilder));
     }
 
     public ViewResult OutcomesPanel(Alert alert)
     {
-      var model = viewModelBuilder.BuildViewModel(alert);
+      var model = _viewModelBuilder.BuildViewModel(alert);
       return View(model);
     }
 

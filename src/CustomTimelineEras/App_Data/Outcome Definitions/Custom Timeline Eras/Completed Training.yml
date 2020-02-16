@@ -19,13 +19,13 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20170715T222940Z
-    - ID: "2a8d9ab0-b1c1-4da3-b17d-1610ad23d697"
+    - ID: "ac6ba888-4213-43bd-b787-d8da2b6b881f"
       Hint: Name
       Value: Completed Training
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{EDCBB550-BED3-490F-82B8-7B2F14CCD26E}"
-    - ID: "65329376-32d9-4b9e-8067-757b9fb75b7d"
+    - ID: "0cf2654b-6e8b-44eb-9555-d2458b8092a5"
       Hint: Image
       Value: |
         <image mediaid="{499EC14A-A6F2-4B56-89AA-940F335F8455}" />

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sitecore.Abstractions;
+using Sitecore.Analytics.Tracking;
 using Sitecore.DependencyInjection;
-using Sitecore.Marketing.Definitions;
-using Sitecore.Marketing.Definitions.Outcomes.Model;
 using Sitecore.Marketing.Taxonomy;
 using Sitecore.Marketing.Taxonomy.Extensions;
 
@@ -11,9 +11,7 @@ namespace CustomTimelineEras
   {
     public void Configure(IServiceCollection serviceCollection)
     {
-      serviceCollection.AddSingleton(_ => DefinitionManagerFactory.Default);
-      serviceCollection.AddSingleton(serviceProvider => serviceProvider.GetService<DefinitionManagerFactory>().GetDefinitionManager<IOutcomeDefinition>());
-      serviceCollection.AddSingleton(_ => TaxonomyManager.Provider);
+      serviceCollection.AddSingleton(serviceProvider => (ContactManager)serviceProvider.GetService<BaseFactory>().CreateObject("tracking/contactManager", true));
       serviceCollection.AddSingleton(serviceProvider => serviceProvider.GetService<ITaxonomyManagerProvider>().GetOutcomeGroupManager());
     }
   }

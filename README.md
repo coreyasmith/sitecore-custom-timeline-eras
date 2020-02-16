@@ -3,16 +3,11 @@
 This project demonstrates how to trigger outcomes and display custom outcomes as
 eras on the Experience Profile timeline in Sitecore.
 
-## 💼 Prerequisites
-
-Since this functionality depends on xDB, MongoDB must be installed and running
-for this solution to work.
-
 ## 🚀 Usage
 
-1. Install a new instance of [Sitecore 8.2 Update-7][1].
-2. Update the `publishUrl` in [`PublishSettings.targets`][2] to point to your
-   Sitecore installation's `Website` folder.
+1. Install a new instance of [Sitecore 9.3][1].
+2. Update the `publishUrl` in [`PublishSettings.targets`][2] to your
+   Sitecore installation's web root (e.g., `C:\inetpub\wwwroot\sc93.sc`).
 3. Update the `physicalRootPath` in [`CustomSerializationFolder.config`][3] to
    point to the root of this repository on your disk.
 4. Build and publish the solution.
@@ -32,7 +27,7 @@ This repository contains Sitecore Support patch
 [`Sitecore.Support.126998.134727`][4] to fix an issue with the timeline. Please
 see the [`README.md` with that patch][5] for more information.
 
-[1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update7.aspx
+[1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/93/Sitecore_Experience_Platform_93_Initial_Release.aspx
 [2]: PublishSettings.targets
 [3]: src/CustomTimelineEras/App_Config/Include/z.CustomTimelineEras.Serialization/CustomSerializationFolder.config
 [4]: https://github.com/SitecoreSupport/Sitecore.Support.126998.134727

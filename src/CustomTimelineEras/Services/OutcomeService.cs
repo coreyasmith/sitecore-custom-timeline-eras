@@ -1,9 +1,7 @@
 ﻿using Sitecore.Analytics;
-using Sitecore.Analytics.Outcome.Extensions;
-using Sitecore.Analytics.Outcome.Model;
-using Sitecore.Common;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Marketing.Definitions.Outcomes.Model;
 
 namespace CustomTimelineEras.Services
 {
@@ -11,12 +9,13 @@ namespace CustomTimelineEras.Services
   {
     public static void RegisterOutcomeForCurrentContact(Item outcomeDefinitionItem)
     {
-      var outcomeId = ID.NewID;
-      var definitionId = outcomeDefinitionItem.ID;
-      var contactId = Tracker.Current.Contact.ContactId.ToID();
+      var outcome = GetOutcomeDefinition(outcomeDefinitionItem.ID);
+      Tracker.Current.Session.Interaction.CurrentPage.RegisterOutcome(outcome, "US", 0);
+    }
 
-      var outcome = new ContactOutcome(outcomeId, definitionId, contactId);
-      Tracker.Current.RegisterContactOutcome(outcome);
+    private static IOutcomeDefinition GetOutcomeDefinition(ID id)
+    {
+      return Tracker.MarketingDefinitions.Outcomes[id];
     }
   }
 }
