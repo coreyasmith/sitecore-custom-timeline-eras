@@ -3,5 +3,5 @@
   <PropertyGroup>
     <publishUrl>C:\inetpub\wwwroot\sc93.sc</publishUrl>
   </PropertyGroup>
-  <Import Project="./PublishSettings.targets.user" Condition="exists('./PublishSettings.targets.user')" />
+  <Import Project="./PublishSettings.Sitecore.targets.user" Condition="exists('./PublishSettings.Sitecore.targets.user')" />
 </Project>
