@@ -8,9 +8,9 @@ using Sitecore.Analytics.Model.Entities;
 using Sitecore.Analytics.Model.Framework;
 using Sitecore.Analytics.Tracking;
 
-namespace CustomTimelineEra.Infrastructure
+namespace CustomTimelineEra.Services
 {
-  public static class ContactHelper
+  public static class ContactService
   {
     public static bool ContactIsIdentified()
     {

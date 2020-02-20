@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
-using CustomTimelineEra.Infrastructure;
+using CustomTimelineEra.Extensions;
+using CustomTimelineEra.Services;
 
 namespace CustomTimelineEra.Controllers
 {
@@ -9,13 +10,13 @@ namespace CustomTimelineEra.Controllers
     [HttpPost]
     public ActionResult IdentifyContact()
     {
-      if (ContactHelper.ContactIsIdentified())
+      if (ContactService.ContactIsIdentified())
       {
         return RedirectToReferrer().WithFailure("Contact already identified.");
       }
 
-      ContactHelper.IdentifyContact();
-      ContactHelper.UpdateContactInformation();
+      ContactService.IdentifyContact();
+      ContactService.UpdateContactInformation();
       return RedirectToReferrer().WithSuccess("Contact identified.");
     }
   }

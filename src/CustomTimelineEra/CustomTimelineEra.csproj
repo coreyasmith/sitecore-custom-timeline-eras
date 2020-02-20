@@ -172,10 +172,10 @@
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="CustomTimelineEraConfigurator.cs" />
     <Compile Include="Facets.cs" />
-    <Compile Include="Infrastructure\BaseController.cs" />
-    <Compile Include="Infrastructure\ContactHelper.cs" />
-    <Compile Include="Infrastructure\OutcomeHelper.cs" />
-    <Compile Include="Infrastructure\RedirectResultExtensions.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\OutcomeService.cs" />
+    <Compile Include="Extensions\RedirectResultExtensions.cs" />
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\OutcomeGroupViewModel.cs" />
     <Compile Include="Models\OutcomesPanelViewModel.cs" />
@@ -189,6 +189,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\OutcomesPanelViewModelBuilder.cs" />
     <Compile Include="Templates.cs" />
     <Compile Include="XDbServicesConfigurator.cs" />
   </ItemGroup>
@@ -285,6 +286,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

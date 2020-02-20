@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace CustomTimelineEra.Infrastructure
+namespace CustomTimelineEra.Controllers
 {
   public abstract class BaseController : Controller
   {

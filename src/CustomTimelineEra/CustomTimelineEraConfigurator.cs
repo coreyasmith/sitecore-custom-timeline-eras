@@ -1,5 +1,5 @@
 ﻿using CustomTimelineEra.Controllers;
-using CustomTimelineEra.Infrastructure;
+using CustomTimelineEra.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 
@@ -13,7 +13,7 @@ namespace CustomTimelineEra
       serviceCollection.AddTransient<OutcomesController>();
       serviceCollection.AddTransient<SessionController>();
 
-      serviceCollection.AddSingleton<OutcomeHelper>();
+      serviceCollection.AddSingleton<OutcomesPanelViewModelBuilder>();
     }
   }
 }

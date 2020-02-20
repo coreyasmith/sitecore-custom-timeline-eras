@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
-using CustomTimelineEra.Infrastructure;
+using CustomTimelineEra.Extensions;
 using CustomTimelineEra.Models;
+using CustomTimelineEra.Services;
 using Sitecore;
 using Sitecore.Common;
 
@@ -9,21 +10,16 @@ namespace CustomTimelineEra.Controllers
 {
   public class OutcomesController : BaseController
   {
-    private readonly OutcomeHelper _outcomeHelper;
+    private readonly OutcomesPanelViewModelBuilder viewModelBuilder;
 
-    public OutcomesController(OutcomeHelper outcomeHelper)
+    public OutcomesController(OutcomesPanelViewModelBuilder viewModelBuilder)
     {
-      _outcomeHelper = outcomeHelper ?? throw new ArgumentNullException(nameof(outcomeHelper));
+      this.viewModelBuilder = viewModelBuilder ?? throw new ArgumentNullException(nameof(viewModelBuilder));
     }
 
     public ViewResult OutcomesPanel(Alert alert)
     {
-      var outcomeGroups = _outcomeHelper.GetAllOutcomeDefinitionGroups();
-      var model = new OutcomesPanelViewModel
-      {
-        Alert = alert,
-        OutcomeGroups = _outcomeHelper.MapOutcomeGroupsToViewModel(outcomeGroups)
-      };
+      var model = viewModelBuilder.BuildViewModel(alert);
       return View(model);
     }
 
@@ -36,7 +32,7 @@ namespace CustomTimelineEra.Controllers
         return RedirectToReferrer().WithFailure("Outcome not found. Did you forget to publish?");
       }
       
-      _outcomeHelper.RegisterOutcomeForCurrentContact(outcomeDefinitionItem);
+      OutcomeService.RegisterOutcomeForCurrentContact(outcomeDefinitionItem);
       return RedirectToReferrer().WithSuccess($"Successfully triggered outcome \"{outcomeDefinitionItem.Name}\".");
     }
   }

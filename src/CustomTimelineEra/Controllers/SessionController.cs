@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using CustomTimelineEra.Infrastructure;
+using CustomTimelineEra.Extensions;
 using Sitecore.Analytics;
 
 namespace CustomTimelineEra.Controllers

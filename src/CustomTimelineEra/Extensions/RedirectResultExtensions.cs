@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using CustomTimelineEra.Models;
 
-namespace CustomTimelineEra.Infrastructure
+namespace CustomTimelineEra.Extensions
 {
   public static class RedirectResultExtensions
   {
