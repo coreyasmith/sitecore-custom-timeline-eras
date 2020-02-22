@@ -26,6 +26,14 @@ for this solution to work.
     *Bruce Wayne* to see the outcomes on the timeline.
 11. Enjoy.
 
+## 💡 Notes
+
+This repository contains Sitecore Support patch
+[`Sitecore.Support.126998.134727`][4] to fix an issue with the timeline. Please
+see the [`README.md` with that patch][5] for more information.
+
 [1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update4.aspx
 [2]: PublishSettings.targets
 [3]: src/CustomTimelineEra/App_Config/Include/z.CustomTimelineEra.Serialization/CustomSerializationFolder.config
+[4]: https://github.com/SitecoreSupport/Sitecore.Support.126998.134727
+[5]: src/CustomTimelineEra/sitecore/shell/client/Business%20Component%20Library/Layouts/Renderings/Common/Timelines/README.md

@@ -162,6 +162,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="sitecore\shell\client\Business Component Library\Layouts\Renderings\Common\Timelines\Timeline.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +238,7 @@
     <Content Include="Scripts\umd\popper.js.flow" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="sitecore\shell\client\Business Component Library\Layouts\Renderings\Common\Timelines\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
