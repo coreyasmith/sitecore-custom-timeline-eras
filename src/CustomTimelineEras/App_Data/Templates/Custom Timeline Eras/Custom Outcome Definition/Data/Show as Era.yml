@@ -1,0 +1,25 @@
+﻿---
+ID: "c9f25aa6-2254-4792-a91f-289c86f52b22"
+Parent: "452ffb31-5caa-4629-959e-1603e1c36657"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Custom Timeline Eras/Custom Outcome Definition/Data/Show as Era
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Checkbox
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Fields:
+  - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
+    Hint: __Short description
+    Value: Show this outcome as an era at the top of the timeline in the Experience Profile
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170715T181545Z

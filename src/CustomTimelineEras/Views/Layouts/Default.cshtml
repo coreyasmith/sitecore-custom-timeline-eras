@@ -1,0 +1,51 @@
+﻿@using Sitecore.Mvc.Analytics.Extensions
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>
+  @Html.Sitecore().VisitorIdentification()
+
+  <link href="/Content/bootstrap.min.css" rel="stylesheet">
+  <link href="/Content/custom.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/">Custom Timeline Eras</a>
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+      </ul>
+      @using (Html.BeginForm("IdentifyContact", "Contact", FormMethod.Post, new { @class = "form-inline my-2 my-lg-0" }))
+      {
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Identify Contact</button>
+      }
+      &nbsp;
+      @using (Html.BeginForm("AbandonSession", "Session", FormMethod.Post, new { @class = "form-inline my-2 my-lg-0" }))
+      {
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Abandon Session</button>
+      }
+    </div>
+  </nav>
+
+  @Html.Action("Alert", "Alert")
+
+  <main class="px-5" role="main">
+    @Html.Sitecore().Placeholder("main")
+  </main>
+
+  <script src="/Scripts/jquery-3.4.1.slim.min.js"></script>
+  <script src="/Scripts/umd/popper.min.js"></script>
+  <script src="/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

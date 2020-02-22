@@ -1,0 +1,26 @@
+﻿---
+ID: "0a3ba377-3172-4dbd-8a5d-cae65a98f891"
+Parent: "ccb2a802-a9dc-4362-ae32-97db8cf9b463"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Custom Timeline Eras/Custom Outcome Definition
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Applications/32x32/checkbox.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Type: tree list
+  Value: "{EE43C2F0-6277-4144-B144-8CA2CEFCCF12}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170715T181514Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

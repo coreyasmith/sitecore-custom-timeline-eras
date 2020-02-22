@@ -1,7 +1,7 @@
-# 💹 Custom Timeline Era
+# 💹 Custom Timeline Eras
 
 This project demonstrates how to trigger outcomes and display custom outcomes as
-eras on the Experience Profile Timeline in Sitecore.
+eras on the Experience Profile timeline in Sitecore.
 
 ## 💼 Prerequisites
 
@@ -34,6 +34,6 @@ see the [`README.md` with that patch][5] for more information.
 
 [1]: https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/82/Sitecore_Experience_Platform_82_Update4.aspx
 [2]: PublishSettings.targets
-[3]: src/CustomTimelineEra/App_Config/Include/z.CustomTimelineEra.Serialization/CustomSerializationFolder.config
+[3]: src/CustomTimelineEras/App_Config/Include/z.CustomTimelineEras.Serialization/CustomSerializationFolder.config
 [4]: https://github.com/SitecoreSupport/Sitecore.Support.126998.134727
-[5]: src/CustomTimelineEra/sitecore/shell/client/Business%20Component%20Library/Layouts/Renderings/Common/Timelines/README.md
+[5]: src/CustomTimelineEras/sitecore/shell/client/Business%20Component%20Library/Layouts/Renderings/Common/Timelines/README.md

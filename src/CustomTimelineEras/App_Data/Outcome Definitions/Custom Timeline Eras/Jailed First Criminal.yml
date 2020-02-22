@@ -1,0 +1,35 @@
+﻿---
+ID: "cd338d7d-0cfa-4072-ad22-f0d5fce2a53d"
+Parent: "1eb1e7f0-4de2-40a1-9b6a-cb954a99065e"
+Template: "0a3ba377-3172-4dbd-8a5d-cae65a98f891"
+Path: /sitecore/system/Marketing Control Panel/Outcomes/Custom Timeline Eras/Jailed First Criminal
+DB: master
+SharedFields:
+- ID: "6ae27532-bac3-42c3-b91f-b4f1f20711c0"
+  Hint: Group
+  Value: "{AD860B0F-D953-4CF6-B0BD-345472B5C4E1}"
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{689E2994-4656-4C58-9112-7826CB46EE69}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170715T223100Z
+    - ID: "2a8d9ab0-b1c1-4da3-b17d-1610ad23d697"
+      Hint: Name
+      Value: Jailed First Criminal
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{EDCBB550-BED3-490F-82B8-7B2F14CCD26E}"
+    - ID: "65329376-32d9-4b9e-8067-757b9fb75b7d"
+      Hint: Image
+      Value: |
+        <image mediaid="{01E93EED-9C8C-4BD4-A7D6-476BC9D4EBEC}" />
+    - ID: "c9f25aa6-2254-4792-a91f-289c86f52b22"
+      Hint: Show as Era
+      Type: Checkbox
+      Value: 1
