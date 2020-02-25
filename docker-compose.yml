@@ -100,11 +100,10 @@ services:
 
   cm:
     image: ${REGISTRY}sitecore-xp-standalone:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
-    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"; C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
     ports:
       - "44001:80"
     volumes:
-      - C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Remote Debugger:C:\remote_debugger:ro
       - .\docker\data\cm:C:\src
       - .\src\CustomTimelineEras\App_Data:C:\Projects\Sitecore\sitecore-custom-timeline-eras\src\CustomTimelineEras\App_Data
     environment:
