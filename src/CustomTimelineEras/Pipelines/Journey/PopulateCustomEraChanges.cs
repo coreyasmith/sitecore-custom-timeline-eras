@@ -72,7 +72,7 @@ namespace CustomTimelineEras.Pipelines.Journey
     protected virtual bool IsCustomEraChangingOutcome(DefinitionResult<IOutcomeDefinition> outcomeDefinition)
     {
       var definitionItem = GetItemFromCurrentContext(outcomeDefinition.Data.Id);
-      var showAsEraField = (CheckboxField)definitionItem.Fields[Templates.CustomOutcomeDefinition.Fields.ShowAsEra];
+      var showAsEraField = (CheckboxField)definitionItem.Fields[Templates.OutcomeDefinition.Fields.ShowAsEra];
       var isCustomEraChangingOutcome = showAsEraField?.Checked ?? false;
       return isCustomEraChangingOutcome;
     }

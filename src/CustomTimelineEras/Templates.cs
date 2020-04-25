@@ -4,7 +4,7 @@ namespace CustomTimelineEras
 {
   public static class Templates
   {
-    public static class CustomOutcomeDefinition
+    public static class OutcomeDefinition
     {
       public static class Fields
       {

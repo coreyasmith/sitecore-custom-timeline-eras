@@ -1,10 +1,14 @@
 ﻿---
 ID: "1170c729-b37e-43ac-afef-08a565d82ad6"
 Parent: "1eb1e7f0-4de2-40a1-9b6a-cb954a99065e"
-Template: "0a3ba377-3172-4dbd-8a5d-cae65a98f891"
+Template: "ee43c2f0-6277-4144-b144-8ca2cefccf12"
 Path: /sitecore/system/Marketing Control Panel/Outcomes/Custom Timeline Eras/Created Costume
 DB: master
 SharedFields:
+- ID: "0cf2654b-6e8b-44eb-9555-d2458b8092a5"
+  Hint: Image
+  Value: |
+    <image mediaid="{23B75A6E-1D6D-44A8-87D5-230B1473FF66}" />
 - ID: "6ae27532-bac3-42c3-b91f-b4f1f20711c0"
   Hint: Group
   Value: "{AD860B0F-D953-4CF6-B0BD-345472B5C4E1}"
@@ -19,16 +23,12 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20170715T223041Z
-    - ID: "ac6ba888-4213-43bd-b787-d8da2b6b881f"
-      Hint: Name
-      Value: Created Costume
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{EDCBB550-BED3-490F-82B8-7B2F14CCD26E}"
-    - ID: "0cf2654b-6e8b-44eb-9555-d2458b8092a5"
-      Hint: Image
-      Value: |
-        <image mediaid="{23B75A6E-1D6D-44A8-87D5-230B1473FF66}" />
+    - ID: "ac6ba888-4213-43bd-b787-d8da2b6b881f"
+      Hint: Name
+      Value: Created Costume
     - ID: "c9f25aa6-2254-4792-a91f-289c86f52b22"
       Hint: Show as Era
       Type: Checkbox

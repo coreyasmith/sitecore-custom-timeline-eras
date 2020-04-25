@@ -2,7 +2,7 @@
 ID: "c9f25aa6-2254-4792-a91f-289c86f52b22"
 Parent: "452ffb31-5caa-4629-959e-1603e1c36657"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Custom Timeline Eras/Custom Outcome Definition/Experience Profile Options/Show as Era
+Path: /sitecore/templates/System/Analytics/Outcome/Outcome Definition/Experience Profile Options/Show as Era
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"

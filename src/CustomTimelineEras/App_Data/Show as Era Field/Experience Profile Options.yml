@@ -1,8 +1,8 @@
 ﻿---
 ID: "452ffb31-5caa-4629-959e-1603e1c36657"
-Parent: "0a3ba377-3172-4dbd-8a5d-cae65a98f891"
+Parent: "ee43c2f0-6277-4144-b144-8ca2cefccf12"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Custom Timeline Eras/Custom Outcome Definition/Experience Profile Options
+Path: /sitecore/templates/System/Analytics/Outcome/Outcome Definition/Experience Profile Options
 DB: master
 Languages:
 - Language: en
